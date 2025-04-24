@@ -165,6 +165,8 @@ sourcename=${KDEB_SOURCENAME:-linux-$KERNELRELEASE}
 
 if [ "$ARCH" = "um" ] ; then
 	packagename=user-mode-linux
+elif [ "$ARCH" = "arm64" ] ; then
+	packagename=linux-image-truenas-$exversion-arm64
 else
 	packagename=linux-image-truenas-$exversion-amd64
 fi
