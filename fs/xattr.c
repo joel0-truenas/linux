@@ -840,6 +840,7 @@ do_getxattr(struct mnt_idmap *idmap, struct dentry *d,
 		kvalue = kvzalloc(ctx->size, GFP_KERNEL);
 		if (!kvalue)
 			return -ENOMEM;
+#endif
 	}
 
 	if (is_posix_acl_xattr(kname))
