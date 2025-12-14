@@ -101,10 +101,9 @@ $(LIBAPI)-clean:
 	$(Q)$(MAKE) -C $(LIB_DIR) O=$(OUTPUT) clean >/dev/null
 
 uapi-asm := $(OUTPUT)arch/$(SRCARCH)/include/generated/uapi/asm
-# This is causing the TrueNAS perf package to fail to build on arm64.
-#ifeq ($(SRCARCH),arm64)
-#	syscall-y := $(uapi-asm)/unistd_64.h
-#endif
+ifeq ($(SRCARCH),arm64)
+	syscall-y := $(uapi-asm)/unistd_64.h
+endif
 uapi-asm-generic:
 	$(if $(syscall-y),\
 		$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.asm-headers obj=$(uapi-asm) \
